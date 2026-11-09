@@ -1,0 +1,683 @@
+/* ==========================================================================
+   Curriculum Vitae - Zidane Keandre Albani
+   File: style.css (Path Relatif untuk GitHub Pages)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. COLOR PALETTE & DESIGN TOKENS (WARM TERRACOTTA & BEIGE PALETTE)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Background Body: Krem Hangat */
+  --bg-body: #f7f1ea;
+
+  /* Card Colors */
+  --bg-sidebar: #f4e5d8;
+  --bg-sidebar-alt: #ebd8c8;
+  --bg-content: #ffffff;
+
+  /* Terracotta Accent Colors */
+  --color-terracotta: #b84a39;
+  --color-terracotta-dark: #9e3d2e;
+  --color-terracotta-light: #f7ebe4;
+  --color-terracotta-border: #e8c4b8;
+
+  /* Header Pill Badge */
+  --color-header-pill: #e5c3ab;
+  --color-header-pill-text: #2c2018;
+
+  /* Text Colors */
+  --text-dark: #22262f;
+  --text-medium: #4a5160;
+  --text-muted: #6b7280;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-card: 26px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(184, 74, 57, 0.04);
+  --shadow-avatar: 0 0 0 3.5px var(--color-terracotta), 0 10px 24px rgba(184, 74, 57, 0.22);
+
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --transition: 0.2s ease-in-out;
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE (LATAR BODY KREM HANGAT #F7F1EA)
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-body);
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-body);
+  color: var(--text-dark);
+  line-height: 1.6;
+  min-height: 100vh;
+  margin: 0;
+  padding: 32px 16px; /* Jarak 32px atas-bawah, 16px padding layar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; /* Mencegah scroll horizontal */
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button, input, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   3. CONTAINER UTAMA (MAX-WIDTH: 1100PX, MARGIN: 0 AUTO)
+   -------------------------------------------------------------------------- */
+.cv-container-wrapper {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top Action Bar: Sejajar dengan Tepi Kanan Kartu */
+.top-action-bar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.25rem;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn-action-light {
+  background-color: #ffffff;
+  color: var(--color-terracotta);
+  border: 1.5px solid var(--color-terracotta);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.btn-action-light:hover {
+  background-color: var(--color-terracotta);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(184, 74, 57, 0.2);
+}
+
+.btn-action-primary {
+  background-color: var(--color-terracotta);
+  color: #ffffff;
+  border: 1.5px solid var(--color-terracotta);
+  box-shadow: 0 4px 14px rgba(184, 74, 57, 0.25);
+}
+
+.btn-action-primary:hover {
+  background-color: var(--color-terracotta-dark);
+  border-color: var(--color-terracotta-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(184, 74, 57, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   4. KARTU CV (2-KOLOM DENGAN BORDER-RADIUS & SHADOW LEMBUT)
+   -------------------------------------------------------------------------- */
+.cv-card-container {
+  width: 100%;
+  background-color: var(--bg-content);
+  border-radius: var(--radius-card);
+  border: 1px solid #ebd8c8;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  position: relative;
+}
+
+/* --------------------------------------------------------------------------
+   5. KOLOM KIRI: SIDEBAR (BEIGE PEACH #F4E5D8)
+   -------------------------------------------------------------------------- */
+.cv-sidebar {
+  background-color: var(--bg-sidebar);
+  padding: 3rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Aksen Dekoratif Geometris Lembut di Background Sidebar */
+.cv-sidebar::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: -60px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: rgba(229, 195, 171, 0.45);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cv-sidebar::after {
+  content: '';
+  position: absolute;
+  top: 100px;
+  left: -40px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(235, 216, 200, 0.5);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.sidebar-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+/* Foto Profil Melingkar dengan Cincin Terracotta */
+.avatar-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.avatar-ring {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  padding: 5px;
+  background-color: #ffffff;
+  box-shadow: var(--shadow-avatar);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 15%;
+  background-color: #dc2626;
+}
+
+/* Section Header Pill */
+.pill-header {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 1.35rem;
+  background-color: var(--color-header-pill);
+  color: var(--color-header-pill-text);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.125rem;
+}
+
+/* Kontak Items di Sidebar */
+.contact-item-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-entry {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  color: var(--text-dark);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: color var(--transition);
+}
+
+.contact-entry:hover {
+  color: var(--color-terracotta);
+}
+
+.contact-icon-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: var(--color-terracotta);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.contact-entry-text {
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+/* Keahlian (List Poin Terracotta) */
+.skills-dot-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.skills-dot-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.45;
+}
+
+.skills-dot-item::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background-color: var(--color-terracotta);
+  border-radius: 50%;
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+
+/* Data Pribadi Ringkas di Sidebar */
+.bio-mini-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--bg-sidebar-alt);
+}
+
+.bio-mini-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+}
+
+.bio-mini-label {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.bio-mini-val {
+  color: var(--text-dark);
+  font-weight: 700;
+  text-align: right;
+}
+
+/* --------------------------------------------------------------------------
+   6. KOLOM KANAN: KONTEN UTAMA (PUTIH BERSIH)
+   -------------------------------------------------------------------------- */
+.cv-main {
+  background-color: var(--bg-content);
+  padding: 3.5rem 3.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  position: relative;
+}
+
+/* Header Nama 2 Baris Huruf Besar Terracotta */
+.header-name-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.name-2-lines {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--color-terracotta);
+  text-transform: uppercase;
+}
+
+.name-line-1,
+.name-line-2 {
+  display: block;
+}
+
+.role-subtitle {
+  font-size: 0.9375rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-dark);
+  margin-top: 0.25rem;
+}
+
+.bio-description {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--text-medium);
+  text-align: justify;
+  margin-top: 0.5rem;
+}
+
+/* Sub-Bagian di Kolom Kanan */
+.main-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.timeline-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.timeline-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.timeline-institution-title {
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.timeline-year-tag {
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: var(--color-terracotta);
+  letter-spacing: 0.04em;
+}
+
+.timeline-sub-status {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-terracotta);
+  font-style: italic;
+}
+
+.timeline-detail-text {
+  font-size: 0.875rem;
+  color: var(--text-medium);
+  line-height: 1.6;
+  margin-top: 0.2rem;
+}
+
+/* Proyek Items */
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.project-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.project-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.project-entry-title {
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.project-badge-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-terracotta-light);
+  color: var(--color-terracotta);
+  border: 1px solid var(--color-terracotta-border);
+  white-space: nowrap;
+}
+
+.project-entry-desc {
+  font-size: 0.875rem;
+  color: var(--text-medium);
+  line-height: 1.6;
+}
+
+/* Formulir Pesan Cepat (Terhubung WhatsApp) */
+.quick-message-block {
+  background-color: #faf6f2;
+  border: 1px solid var(--color-terracotta-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  margin-top: 1rem;
+}
+
+.quick-form-title {
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: var(--color-terracotta);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.form-input-clean {
+  width: 100%;
+  padding: 0.6rem 0.875rem;
+  background-color: #ffffff;
+  border: 1px solid #dcd1c9;
+  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
+  outline: none;
+  transition: all var(--transition);
+}
+
+.form-input-clean:focus {
+  border-color: var(--color-terracotta);
+  box-shadow: 0 0 0 3px rgba(184, 74, 57, 0.15);
+}
+
+.btn-send-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  background-color: var(--color-terracotta);
+  color: #ffffff;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  transition: all var(--transition);
+}
+
+.btn-send-wa:hover {
+  background-color: var(--color-terracotta-dark);
+}
+
+/* Footer CV */
+.cv-footer {
+  padding-top: 1.5rem;
+  border-top: 1px solid #ece4dc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. RESPONSIVE (DI BAWAH 768PX: DUA KOLOM JADI SATU KOLOM)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 24px 16px; /* Jarak 24px atas-bawah, padding samping 16px */
+  }
+
+  .cv-card-container {
+    grid-template-columns: 1fr; /* Dua kolom menjadi satu kolom */
+    border-radius: var(--radius-lg);
+  }
+
+  .cv-sidebar {
+    padding: 2.5rem 1.5rem 2rem;
+  }
+
+  .cv-main {
+    padding: 2.25rem 1.5rem;
+  }
+
+  .name-2-lines {
+    font-size: 2.25rem;
+  }
+
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .top-action-bar {
+    justify-content: flex-end;
+  }
+}
+
+/* Extra small mobile */
+@media screen and (max-width: 480px) {
+  .top-action-bar {
+    flex-direction: column;
+  }
+
+  .btn-action {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. OPTIMASI CETAK (@MEDIA PRINT - MEMENUHI LEBAR A4, BACKGROUND KREM DIHAPUS)
+   -------------------------------------------------------------------------- */
+@media print {
+  html, body {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  .top-action-bar,
+  .quick-message-block {
+    display: none !important; /* Tombol & form pesan disembunyikan */
+  }
+
+  .cv-container-wrapper {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .cv-card-container {
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    grid-template-columns: 310px 1fr !important; /* Memenuhi lebar A4 2-kolom */
+  }
+
+  .cv-sidebar {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background-color: #f4e5d8 !important;
+    padding: 2rem 1.5rem !important;
+  }
+
+  .cv-main {
+    padding: 2rem 2rem !important;
+  }
+
+  .name-2-lines {
+    font-size: 2.5rem !important;
+    color: #b84a39 !important;
+  }
+
+  .pill-header {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background-color: #e5c3ab !important;
+  }
+}
